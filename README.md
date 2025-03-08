@@ -1,5 +1,5 @@
 # mobro_sim
-This is ROS packages for the simple robot simulation packages for learning ROS 2 through the mobile robot.
+This is the ROS package for the simple robot simulation packages for learning ROS 2 through the mobile robot.
 
 ## 1. Supported OS
 - Ubuntu 22.04
