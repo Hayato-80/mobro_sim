@@ -36,12 +36,7 @@ Ensure the following software is installed:
    cd ~/ros2_ws/
    ros2 launch mobro_gazebo mobro_gazebo.launch.py
    ```
-2. **2nd terminal: Run the base node of the robot**
-   ```bash
-   cd ~/ros2_ws/
-   ros2 run mobro_base mobro_base
-   ```   
-3. **3rd terminal: Run teleop_twist_keyboard**
+2. **3rd terminal: Run teleop_twist_keyboard**
    ```bash
    # Please make sure this terminal is active
    cd ~/ros2_ws/
