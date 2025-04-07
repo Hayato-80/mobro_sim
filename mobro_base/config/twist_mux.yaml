@@ -1,0 +1,20 @@
+twist_mux:
+  ros__parameters:
+  # prioritize the twist topics
+    topics:
+      navigation:
+        topic: "/cmd_vel"
+        # type: "geometry_msgs/Twist"
+        # default: true
+        timeout: 0.5
+        priority: 5
+      keyboard:
+        topic: "/cmd_vel_teleop"
+        # type: "geometry_msgs/Twist"
+        # default: false
+        timeout: 0.5
+        priority: 100
+      # - name: "/cmd_vel_joystick"
+      #   type: "geometry_msgs/Twist"
+      #   default: false
+      #   priority: 1
