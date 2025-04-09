@@ -6,8 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Map1/Topic1
       Splitter Ratio: 0.5
-    Tree Height: 361
+    Tree Height: 359
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -73,6 +74,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         camera:
           Alpha: 1
           Show Axes: false
@@ -82,11 +84,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        chassis:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         front_caster_wheel:
           Alpha: 1
           Show Axes: false
@@ -176,15 +173,11 @@ Visualization Manager:
           Value: true
         camera_optical:
           Value: true
-        chassis:
-          Value: true
         front_caster_wheel:
           Value: true
         left_wheel:
           Value: true
         lidar:
-          Value: true
-        map:
           Value: true
         odom:
           Value: true
@@ -196,24 +189,20 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          {}
         odom:
-          base_link:
-            base_footprint:
-              {}
-            chassis:
+          base_footprint:
+            base_link:
               camera:
                 camera_optical:
                   {}
               front_caster_wheel:
                 {}
+              left_wheel:
+                {}
               lidar:
                 {}
-            left_wheel:
-              {}
-            right_wheel:
-              {}
+              right_wheel:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -268,6 +257,7 @@ Visualization Manager:
         Image: true
         LaserScan: true
         Map: true
+        Path: true
         PointCloud2: true
         RobotModel: true
         TF: true
@@ -275,9 +265,9 @@ Visualization Manager:
       Zoom Factor: 1
     - Alpha: 0.699999988079071
       Class: rviz_default_plugins/Map
-      Color Scheme: map
+      Color Scheme: costmap
       Draw Behind: false
-      Enabled: true
+      Enabled: false
       Name: Map
       Topic:
         Depth: 5
@@ -285,19 +275,47 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: ""
+        Value: /global_costmap/costmap
       Update Topic:
         Depth: 5
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: ""
+        Value: /global_costmap/costmap_updates
       Use Timestamp: false
-      Value: true
+      Value: false
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz_default_plugins/Path
+      Color: 25; 255; 0
+      Enabled: false
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /plan
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: map
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -340,25 +358,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 9.672133445739746
+      Distance: 5.563644886016846
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.282809317111969
-        Y: -0.014226929284632206
-        Z: 0.4975507855415344
+        X: -0.11263974010944366
+        Y: -0.4085446298122406
+        Z: -0.006647781003266573
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.564796507358551
+      Pitch: 0.3647966682910919
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.1453988552093506
+      Yaw: 1.1003986597061157
     Saved: ~
 Window Geometry:
   Camera:
@@ -370,7 +388,7 @@ Window Geometry:
   Hide Right Dock: true
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd000000040000000000000156000002b4fc020000000afb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b000001f2000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d0061006700650100000233000000bc0000002800fffffffb0000000c00430061006d0065007200610000000233000000bc0000002800ffffff000000010000010f000002b4fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003b000002b4000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004b00000003efc0100000002fb0000000800540069006d00650100000000000004b00000025300fffffffb0000000800540069006d0065010000000000000450000000000000000000000354000002b400000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd000000040000000000000156000002b4fc020000000afb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b000001f0000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d0061006700650100000231000000be0000002800fffffffb0000000c00430061006d0065007200610000000278000000770000002800ffffff000000010000010f000002b4fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003b000002b4000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004b00000003efc0100000002fb0000000800540069006d00650100000000000004b00000025300fffffffb0000000800540069006d0065010000000000000450000000000000000000000354000002b400000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -380,5 +398,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1200
-  X: 371
-  Y: -8
+  X: 253
+  Y: -10

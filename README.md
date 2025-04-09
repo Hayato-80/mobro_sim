@@ -29,16 +29,40 @@ Ensure the following software is installed:
    ```bash
    source install/setup.bash
    ```
-## 3. Simulation 
-### Simulation on Gazebo 11
+## 3. Simulation on Gazebo
+### Teleoperation using keyboard
 1. **1st terminal: Launch gazebo and rviz2**:
    ```bash
    cd ~/ros2_ws/
    ros2 launch mobro_gazebo mobro_gazebo.launch.py
    ```
-2. **3rd terminal: Run teleop_twist_keyboard**
+2. **2rd terminal: Run teleop_twist_keyboard**
    ```bash
    # Please make sure this terminal is active
    cd ~/ros2_ws/
    ros2 run teleop_twist_keyboard teleop_twist_keyboard
+   ```
+### Navigation using Navigation2 with AMCL
+1. **1st terminal: Launch gazebo and rviz2**:
+   ```bash
+   cd ~/ros2_ws/
+   ros2 launch mobro_gazebo mobro_gazebo.launch.py
+   ```
+2. **2rd terminal: Launch Nav2**
+   ```bash
+   # Please make sure this terminal is active and the map yaml file is saved
+   cd ~/ros2_ws/
+   ros2 launch nav2_bringup bringup_launch.py use_sim_time:=True map:=path_to_your_map
+   ```
+3. **3rd terminal: Run AMCL**
+   ```bash
+   # Please make sure this terminal is active
+   cd ~/ros2_ws/
+   ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
+   ```
+4. **4th terminal: Run lifecycle_bringup for the AMCL node**
+   ```bash
+   # Please make sure this terminal is active
+   cd ~/ros2_ws/
+   ros2 run nav2_util lifecycle_bringup amcl
    ```

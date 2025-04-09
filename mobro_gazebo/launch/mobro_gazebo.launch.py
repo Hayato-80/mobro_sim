@@ -21,11 +21,11 @@ def generate_launch_description():
     #pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
     pkg_my_gazebo = get_package_share_directory('mobro_gazebo')
     gazebo_world_file = os.path.join(pkg_my_gazebo, 'worlds', 'test_home.world')
-    slam_params = os.path.join(pkg_my_gazebo, 'config', 'slam_params.yaml')
+    #slam_params = os.path.join(pkg_my_gazebo, 'config', 'slam_params.yaml')
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     # Declare the launch argument for GUI visibility
     #use_gui_arg = DeclareLaunchArgument('use_gui', default_value='True', description='Use joint state publisher GUI')
-    slam_package_dir = get_package_share_directory('slam_toolbox')
+    #slam_package_dir = get_package_share_directory('slam_toolbox')
     # gazebo_node = launch_ros.actions.Node(
     #     package='gazebo_ros',
     #     executable='gazebo',
@@ -45,6 +45,7 @@ def generate_launch_description():
         # parameters=[{'use_sim_time': use_sim_time}],
         arguments=['-entity', 'mobro', 
                    '-topic', '/robot_description'],
+        parameters=[{'use_sim_time': use_sim_time}],
     )
 
     # Joint State Publisher (GUI) node
@@ -65,9 +66,9 @@ def generate_launch_description():
     robot_state_publisher_node = launch_ros.actions.Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        name='robot_state_publisher',
         output='screen',
-        parameters=[{'robot_description': robot_description_config.toxml(), 'use_sim_time': use_sim_time}]
+        parameters=[{'robot_description': robot_description_config.toxml(),
+                      'use_sim_time': use_sim_time}]
         #parameters=[{'robot_description': open(urdf_file).read()}]
     )
 
@@ -88,9 +89,14 @@ def generate_launch_description():
           'world',
           default_value=[gazebo_world_file, ''],
           description='SDF world file'),
+        DeclareLaunchArgument(
+            'use_sim_time',
+            default_value='true',
+            description='Use simulation time if true'
+        ),
         gazebo_node,
         robot_spawn,
-        joint_state_publisher,
+        #joint_state_publisher,
         #joint_state_publisher_gui_node,
         robot_state_publisher_node,
         rviz2_node,
