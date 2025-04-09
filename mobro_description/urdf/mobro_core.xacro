@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobro">
-  <xacro:include filename="$(find mobro_description)/urdf/inertial_macro.xacro" />
+  <xacro:include filename="$(find mobro_description)/urdf/inertial_macro.xacro"/>
   
   <material name="Gray">
     <color rgba="0.5 0.5 0.5 1.0"/>
@@ -51,8 +51,6 @@
 
   <gazebo reference="base_link">
       <material>Gazebo/White</material>
-      <!-- <mu1>0.5</mu1>
-      <mu2>0.5</mu2> -->
   </gazebo>
 
   <joint name="left_joint" type="continuous">

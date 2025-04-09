@@ -1,8 +1,11 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobro">
   <xacro:include filename="$(find mobro_description)/urdf/mobro_core.xacro"/>
-  <xacro:include filename="$(find mobro_description)/urdf/gazebo_control.xacro"/>
+
+
   <xacro:include filename="$(find mobro_description)/urdf/gazebo_lidar_rgbd.xacro"/>
+  <xacro:include filename="$(find mobro_description)/urdf/ros2_control.xacro"/>
+  
   <!-- <xacro:include filename="$(find mobro_description)/urdf/gazebo_rgb_camera.xacro"/> -->
   <!-- <xacro:include filename="$(find mobro_description)/urdf/gazebo_depth_camera.xacro"/> -->
   <!-- <xacro:include filename="$(find mobro_description)/urdf/gazebo_2D_lidar.xacro"/> -->
