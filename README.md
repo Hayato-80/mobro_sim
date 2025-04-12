@@ -48,21 +48,18 @@ Ensure the following software is installed:
    cd ~/ros2_ws/
    ros2 launch mobro_gazebo mobro_gazebo.launch.py
    ```
-2. **2rd terminal: Launch Nav2**
+2. **2rd terminal: Launch Nav2 localization**
    ```bash
    # Please make sure this terminal is active and the map yaml file is saved
    cd ~/ros2_ws/
-   ros2 launch nav2_bringup bringup_launch.py use_sim_time:=True map:=path_to_your_map
+   ros2 launch nav2_bringup localization_launch.py map:=./first_map_save.yaml use_sim_time:=true
+
+   # Change Durability Policy setting to Transient Local in Map panel 
+   # in rviz2 then set the robot initial pose with 2D pose estimate
    ```
-3. **3rd terminal: Run AMCL**
+3. **3rd terminal: Launch Nav2 navigation**
    ```bash
    # Please make sure this terminal is active
    cd ~/ros2_ws/
-   ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
-   ```
-4. **4th terminal: Run lifecycle_bringup for the AMCL node**
-   ```bash
-   # Please make sure this terminal is active
-   cd ~/ros2_ws/
-   ros2 run nav2_util lifecycle_bringup amcl
+   ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
    ```

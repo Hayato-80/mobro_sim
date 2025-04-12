@@ -71,18 +71,25 @@
       </geometry>
       <material name="Black"/>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.04" radius="0.05"/>
+      </geometry>
+    </collision> -->
+    <!-- set sphere since it is simulation which has ideal conditions -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.05"/>
       </geometry>
     </collision>
   </link>
 
   <gazebo reference="left_wheel">
       <material>Gazebo/Black</material>
-      <mu1>0.5</mu1>
-      <mu2>0.5</mu2>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
   </gazebo>
 
   <joint name="right_joint" type="continuous">
@@ -103,18 +110,26 @@
       </geometry>
       <material name="Black"/>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.04" radius="0.05"/>
+      </geometry>
+    </collision> -->
+
+    <!-- set sphere since it is simulation which has ideal conditions -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.05"/>
       </geometry>
     </collision>
   </link>
 
   <gazebo reference="right_wheel">
       <material>Gazebo/Black</material>
-      <mu1>0.5</mu1>
-      <mu2>0.5</mu2>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
   </gazebo>		
   
 
@@ -145,8 +160,8 @@
 
   <gazebo reference="front_caster_wheel">
       <material>Gazebo/Black</material>
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
+      <mu1>0.001</mu1>
+      <mu2>0.001</mu2>
   </gazebo>
   
 
